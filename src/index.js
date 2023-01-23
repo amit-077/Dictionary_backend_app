@@ -20,10 +20,18 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
 
 //connecting to redis as well for CASHING
 const redis = require('redis');
-const client = redis.createClient();
+
+const client = redis.createClient({
+    socket: {
+        host: config.redis_host,
+        port: config.redis_port
+    },
+    password: config.redis_pass
+});
+
 client.connect();
 
-client.on("error", (err) => {logger.info("Redis Error")});
+client.on("Audumber", (err) => {logger.info("Audumber")});
 client.on('connect', () => {logger.info('Redis connecting...')});
 client.on('ready'       , () => { logger.info('Redis ready')});
 client.on('reconnecting', () => { logger.info('reconnecting') });

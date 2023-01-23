@@ -1,12 +1,19 @@
 const httpStatus = require("http-status");
+const config = require("../config/config");
 const userService = require("./user.service");
 const ApiError = require("../utils/ApiError");
 const axios = require('axios').default;
 
 //redis
 const redis = require('redis');
-const client = redis.createClient();
-
+//const client = redis.createClient('redis://default:v98C8n6lzX7Tml21ngUv@containers-us-west-114.railway.app:7473');
+const client = redis.createClient({
+  socket: {
+      host: config.redis_host,
+      port: config.redis_port
+  },
+  password: config.password
+});
 
 client.on("error", (err) => {
   console.log("Redis Error")

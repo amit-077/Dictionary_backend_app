@@ -31,6 +31,10 @@ const envVarsSchema = Joi.object()
     JWT_REFRESH_EXPIRATION_DAYS: Joi.number()
       .default(365)
       .description("days after which refresh tokens expire"),
+      REDIS_HOST:Joi.string().required().description("Redis url"),
+      REDIS_PORT:Joi.string().required().description("Redis Port"),
+      REDIS_USER:Joi.string().required().description("Redis user"),
+      REDIS_PASS:Joi.string().required() 
   })
   .unknown();
 
@@ -52,6 +56,12 @@ module.exports = {
       useUnifiedTopology: true,
     },
   },
+  //Set Redis configuration
+  redis_host:envVars.REDIS_HOST,
+  redis_port: envVars.REDIS_PORT,
+  redis_user: envVars.REDIS_USER,
+  redis_pass: envVars.REDIS_PASS,
+
   default_wallet_money: DEFAULT_WALLET_MONEY,
   default_payment_option: DEFAULT_PAYMENT_OPTION,
   default_address: DEFAULT_ADDRESSS,
