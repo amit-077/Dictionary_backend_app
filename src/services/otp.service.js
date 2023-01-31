@@ -6,13 +6,13 @@ const axios = require('axios').default;
 
 //redis
 const redis = require('redis');
-//const client = redis.createClient('redis://default:v98C8n6lzX7Tml21ngUv@containers-us-west-114.railway.app:7473');
+//const client = redis.createClient({'redis://default:v98C8n6lzX7Tml21ngUv@containers-us-west-114.railway.app:7473',config.password});
 const client = redis.createClient({
   socket: {
       host: config.redis_host,
       port: config.redis_port
   },
-  password: config.password
+  password: config.redis_pass
 });
 
 client.on("error", (err) => {
@@ -23,8 +23,10 @@ client.connect();
 
 //store the OTP in the redis cache 
 const setotp = async (contact_number, otp) => {
-  
-  client.set(contact_number, otp);
+  console.log("I am in redis")
+  client.set(contact_number, otp, (err, reply) => {
+    console.log(reply);
+  });
 
   return true;
 }
@@ -64,15 +66,14 @@ const sendotp = async (contact_number) => {
   })
     .then(res => {
       const setOTP = setotp(contact_number, val)
-      console.log(`statusCode: ${res.statusCode}`)
-      console.log(res)
-
+      return val;
     })
     .catch(error => {
+      console.log("I am in error")
       console.error(error)
       throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, {
         status: "fail",
-        statusCode: INTERNAL_SERVER_ERROR,
+        statusCode: httpStatus.INTERNAL_SERVER_ERROR,
         data: "",
         message: "Somthing went wrong from our side"
 
@@ -80,7 +81,7 @@ const sendotp = async (contact_number) => {
     });
 
 
-  return val;
+  
 
 
 

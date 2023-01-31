@@ -19,7 +19,7 @@ router.post("/login", validate(authValidation.login), authController.login);
 
 
 //verify
-router.post("/otp/send" , validate(authValidation.send_otp) , authController.send_otp)
+router.post("/otp/send" ,  validate(authValidation.send_otp) , authController.send_otp)
 router.post("/otp/verify", validate(authValidation.verify_otp) , authController.verify_otp)
 
 module.exports = router;

@@ -89,7 +89,7 @@ const login = catchAsync(async (req, res) => {
 const send_otp = catchAsync(async (req, res) => {
   const { contact } = req.body;
   const sms = await otpService.sendotp(contact);
-  res.send(httpStatus.UNAUTHORIZED, {
+  res.status(httpStatus.OK).send ({
     status: "success",
     statusCode: httpStatus.OK,
     data: "",
