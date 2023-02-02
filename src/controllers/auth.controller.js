@@ -101,26 +101,27 @@ const send_otp = catchAsync(async (req, res) => {
 const verify_otp = catchAsync(async (req, res) => {
   const { contact, otp } = req.body;
   const verify = await otpService.getotp(contact, otp);
+
   //cheking weather this is user of our app or not , if yes directly loggin in.
   const user = await authService.loginUserWithContactAndPasswordNew(contact);
   if (!user) {
-    res.send(httpStatus.UNAUTHORIZED, {
-      code:httpStatus.UNAUTHORIZED,
+    res.send(httpStatus.OK, {
+      code:httpStatus.OK,
       status: "fail",
       redirect: true,
       data: "",
-      message: "Redirect to signup page"
+      message: "User not found , Redirect to signup page"
 
     })
   }
   const tokens = await tokenService.generateAuthTokens(user);
-  res.send(httpStatus.OK, {
+  res.send(httpStatus.CREATED, {
     code: httpStatus.OK,
     status: "success",
     redirect: false,
     data: user,
     token: tokens,
-    message: "Redirect to signup page"
+    message: "Login Successfully , Redirect to home page"
 
   })
 
