@@ -38,7 +38,6 @@ const getotp = async (contact_number, otp) => {
   if (fetched_otp != otp) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "Incorrect OTP");
   }
-
   return true;
 }
 
