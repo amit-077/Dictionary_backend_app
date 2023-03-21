@@ -116,7 +116,7 @@ const verify_otp = catchAsync(async (req, res) => {
   }
   const tokens = await tokenService.generateAuthTokens(user);
   res.send(httpStatus.CREATED, {
-    code: httpStatus.OK,
+    code: httpStatus.CREATED,
     status: "success",
     redirect: false,
     data: user,
