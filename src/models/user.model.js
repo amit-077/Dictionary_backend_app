@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 // NOTE - "validator" external library and not the custom middleware at src/middlewares/validate.js
 const validator = require("validator");
@@ -15,19 +14,17 @@ const userSchema = mongoose.Schema(
     },
     contact: {
       // CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
-      type: String  ,
+      type: String,
       required: true,
       unique: true,
       trim: true,
       lowercase: true,
       // https://www.npmjs.com/package/validator
-      validate(value){
-        if(!validator.isMobilePhone("91"+value) || value.length<10){
-          throw new Error("Invalid Mobile")
+      validate(value) {
+        if (!validator.isMobilePhone("91" + value) || value.length < 10) {
+          throw new Error("Invalid Mobile");
         }
-        
       },
-
     },
     password: {
       type: String,
@@ -43,59 +40,53 @@ const userSchema = mongoose.Schema(
       },
     },
 
-    email:{
-      type: String  ,
+    email: {
+      type: String,
       required: true,
       unique: true,
       trim: true,
       lowercase: true,
       default: config.default_email,
-      validate(value){
-        if(!validator.isEmail(value)){
-          throw new Error("Email format is incorrect")
+      validate(value) {
+        if (!validator.isEmail(value)) {
+          throw new Error("Email format is incorrect");
         }
-      }
-
+      },
     },
-    city:{
-      type: String  ,
+    city: {
+      type: String,
       required: true,
       trim: true,
       lowercase: true,
-      default: config.default_city
-
+      default: config.default_city,
     },
-    college:{
-      type: String  ,
+    college: {
+      type: String,
       required: true,
       trim: true,
       lowercase: true,
-      default: config.default_college
-
+      default: config.default_college,
     },
-    dob:{
-      type: String  ,
+    dob: {
+      type: String,
       required: true,
       trim: true,
       lowercase: true,
-      default: config.default_dob
-
+      default: config.default_dob,
     },
-    gender:{
-      type: String  ,
+    gender: {
+      type: String,
       required: true,
       trim: true,
       lowercase: true,
-      default: config.default_gender
-
+      default: config.default_gender,
     },
-    interest:{
-      type: Array ,
+    interest: {
+      type: Array,
       required: true,
       trim: true,
       lowercase: true,
-      default: config.default_interest
-
+      default: config.default_interest,
     },
     walletMoney: {
       // CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
@@ -116,21 +107,16 @@ const userSchema = mongoose.Schema(
   }
 );
 
-
-
 //  Check if contact is taken
 userSchema.statics.isContactTaken = async function (contact) {
   const user = await this.findOne({ contact });
   return !!user;
 };
 
-
-
 //  Check if entered password matches the user's password
- userSchema.methods.isPasswordMatch = async function (password) {
+userSchema.methods.isPasswordMatch = async function (password) {
   const user = this;
   return bcrypt.compare(password, user.password);
-
 };
 
 // CRIO_SOLUTION_START_MODULE_AUTH

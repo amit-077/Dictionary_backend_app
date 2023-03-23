@@ -11,18 +11,15 @@ const { password } = require("./custom.validation");
  * - "name": string
  */
 const register = {
-
   body: Joi.object().keys({
     contact: Joi.string().required(),
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
-    email : Joi.string().required().email(),
-    city : Joi.string().required(),
-    dob : Joi.string().required(),
-    gender : Joi.string().required()
-
-
-
+    email: Joi.string().required().email(),
+    city: Joi.string().required(),
+    college: Joi.string().required(),
+    // dob: Joi.string().required(),
+    // gender: Joi.string().required(),
   }),
   // CRIO_SOLUTION_END_MODULE_AUTH
 };
@@ -42,19 +39,17 @@ const login = {
 };
 
 const send_otp = {
-  body:Joi.object().keys({
-    contact : Joi.string().required()
-  })
-}
+  body: Joi.object().keys({
+    contact: Joi.string().required(),
+  }),
+};
 
 const verify_otp = {
-  body:Joi.object().keys({
-    contact : Joi.string().required(),
-    otp : Joi.number().required()
-  })
-}
-
-
+  body: Joi.object().keys({
+    contact: Joi.string().required(),
+    otp: Joi.number().required(),
+  }),
+};
 
 module.exports = {
   register,
