@@ -16,8 +16,10 @@ const register = {
     password: Joi.string().required().custom(password),
     name: Joi.string().required(),
     email: Joi.string().required().email(),
-    //city: Joi.string().required(),
-    //college: Joi.string().required(),
+    native_language: Joi.string().required(),
+    level_of_english : Joi.string().required(),
+    topics : Joi.array().required(),
+    examAspirant: Joi.boolean().required()
     // dob: Joi.string().required(),
     // gender: Joi.string().required(),
   }),

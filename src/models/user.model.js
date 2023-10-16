@@ -13,7 +13,6 @@ const userSchema = mongoose.Schema(
       trim: true,
     },
     contact: {
-      // CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
       type: String,
       required: true,
       unique: true,
@@ -100,7 +99,48 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       default: config.default_address,
     },
+    profileImage: {
+      type: String,
+      default: config.default_profile_image,
+    },
+
+    //wordify important categories.
+    level_of_english:{
+      type: String,
+      default: config.level_of_english,
+    },
+    points: {
+      type: Number,
+      default: 0,
+    },
+    favoriteWords: {
+      type: Array,
+      default: [],
+    },
+    wordCategories: {
+      type: Array,
+      default: [],
+    },
+    profession: {
+      type: String,
+      default: config.default_profession,
+    },
+    topics: {
+      type: Array,
+      default: config.default_interest,
+    },
+    examAspirant: {
+      type:Boolean,
+      default:false
+    },
+    premiumUser:{
+      type:Boolean,
+      default:false
+    }
+    
   },
+
+
   // Create createdAt and updatedAt fields automatically
   {
     timestamps: true,
@@ -119,8 +159,6 @@ userSchema.methods.isPasswordMatch = async function (password) {
   return bcrypt.compare(password, user.password);
 };
 
-// CRIO_SOLUTION_START_MODULE_AUTH
-// NOTE - Quiz or mention in debrief on next() - middleware?
 userSchema.pre("save", async function (next) {
   const user = this;
   if (user.isModified("password")) {
@@ -128,7 +166,6 @@ userSchema.pre("save", async function (next) {
   }
   next();
 });
-// CRIO_SOLUTION_END_MODULE_AUTH
 
 /**
  * Check if user have set an address other than the default address
@@ -139,12 +176,8 @@ userSchema.pre("save", async function (next) {
  */
 userSchema.methods.hasSetNonDefaultAddress = async function () {
   const user = this;
-  // CRIO_UNCOMMENT_START_MODULE_TEST
   // return user.address === config.default_address;
-  // CRIO_UNCOMMENT_END_MODULE_TEST
-  // CRIO_SOLUTION_START_MODULE_TEST
   return user.address !== config.default_address;
-  // CRIO_SOLUTION_END_MODULE_TEST
 };
 
 // TODO: CRIO_TASK_MODULE_UNDERSTANDING_BASICS
@@ -163,4 +196,4 @@ module.exports.User = User;
 module.exports = {
   User,
 };
-// CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
+

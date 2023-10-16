@@ -5,6 +5,7 @@ const path = require('path');
 const Joi = require('joi');
 
 const DEFAULT_WALLET_MONEY = 500;
+const DEFAULT_LEVEL_OF_ENGLISH= "L0";
 const DEFAULT_PAYMENT_OPTION = "PAYMENT_OPTION_DEFAULT";
 const DEFAULT_ADDRESSS = "ADDRESS_NOT_SET";
 
@@ -14,6 +15,8 @@ const DEFAULT_COLLEGE = "COLLEGE_NOT_SET";
 const DEFAULT_GENDER = "GENDER_NOT_SET";
 const DEFAULT_INTEREST = ["INTEREST_NOT_SET"];
 const DEFAULT_DOB = "DOB_NOT_SET";
+const DEFAULT_PROFESSION = "PROFESSION_NOT_SET"
+const DEFAULT_PROFILE_IMAGE = "https://i.pinimg.com/564x/33/ba/df/33badf7bd7e2bd56b21e3d972fe3ed5a.jpg"
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
@@ -71,6 +74,10 @@ module.exports = {
   default_dob : DEFAULT_DOB,
   default_gender : DEFAULT_GENDER,
   default_interest : DEFAULT_INTEREST,
+  default_level_of_english: DEFAULT_LEVEL_OF_ENGLISH,
+  default_profession: DEFAULT_PROFESSION,
+  default_profile_image:DEFAULT_PROFILE_IMAGE,
+ 
   jwt: {
     secret: envVars.JWT_SECRET,
     accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,
