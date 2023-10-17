@@ -17,18 +17,59 @@
 const express = require("express");
 const validate = require("../../middlewares/validate");
 const userValidation = require("../../validations/user.validation");
-const wordifymeController = require("../../controllers/wordifyme.controller");
+const categoryController = require("../../controllers/category.controller");
+const LeaderBoardController = require("../../controllers/LeaderBoard.controller");
+const quizController = require("../../controllers/quiz.controller")
 const auth = require("../../middlewares/auth");
 
 const router = express.Router();
 
 
-//Categories - working
+//Categories - working --------------------------------------------------------
   router.get(
-    "/word-list/:categoryName",
+    "/user-word-category/:userId",
     auth(),
-    wordifymeController.getWordList,
+    categoryController.getWordCategory,
   );
+
+  router.get(
+    "/word-list/:userId",
+    auth(),
+    categoryController.getWordList,
+  );
+
+  router.put(
+    "/update-word-list/:userId",
+    auth(),
+    categoryController.updateWordList
+  )
+
+
+  //Quiz -----------------------------------------------------------------------
+  router.get(
+    "/quiz/:category",
+    auth(),
+    quizController.getQuestions,
+  );
+
+  router.post(
+    "/quiz/score/:userId",
+    auth(),
+    quizController.setScore
+  )
+
+
+  //leaderBoard ------------------------------------------------------------------
+  router.get(
+    "/leader-board",
+    auth() ,
+    LeaderBoardController.getLeaders
+  );
+
+  
+
+
+
 
  //Favoutite Words - Incomplete
   // router.get(

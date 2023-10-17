@@ -27,6 +27,10 @@ const wordCategorySchema = mongoose.Schema({
     type: Array,
     default: [],
   },
+  isCompleted:{
+    type: Boolean,
+    default: false,
+  },
   wordsList: [
     {
       word: {
@@ -41,11 +45,18 @@ const wordCategorySchema = mongoose.Schema({
      },
      Image:{
       type: String,
+      trim: true,
      },
      use_case:{
       type: String,
         required: true,
         trim: true,
+     },
+     isKnown:{
+      type: String,
+      default:"unknown",
+      trim: true,
+      //options : unknown , yes , no
      }
     },
   ],

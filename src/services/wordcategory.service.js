@@ -1,5 +1,3 @@
-// CRIO_SOLUTION_START_MODULE_UNDERSTANDING_BASICS
-// CRIO_SOLUTION_END_MODULE_UNDERSTANDING_BASICS
 const { User } = require("../models");
 const WordCategory= require("../models/WordCategory"); // Replace with the correct path to your WordCategory model
 const httpStatus = require("http-status");
@@ -17,6 +15,7 @@ const setUserWordCategory = async (user , topics) => {
         likes: category.likes,
         isPremium: category.isPremium,
         tags: category.tags,
+        wordsList : category.wordsList,
        // image:category.image
       }));
       

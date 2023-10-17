@@ -9,3 +9,5 @@ module.exports.otpService = require("./otp.service");
 
 //wordifyme
 module.exports.WordCategoryService = require("./wordcategory.service")
+module.exports.LeaderBoardService = require("./leaderboard.service")
+

@@ -2,7 +2,7 @@
 // CRIO_SOLUTION_END_MODULE_AUTH
 const httpStatus = require("http-status");
 const catchAsync = require("../utils/catchAsync");
-const { authService, userService, tokenService, otpService , WordCategoryService } = require("../services");
+const { authService, userService, tokenService, otpService , WordCategoryService, LeaderBoardService } = require("../services");
 
 /**
  * Perform the following steps:
@@ -38,6 +38,8 @@ const register = catchAsync(async (req, res) => {
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
   const setWordCategory = await WordCategoryService.setUserWordCategory(user, req.body.topics)
+  const setLeaderBoard = await LeaderBoardService.setLeaderBoard(user)
+
   res.status(httpStatus.CREATED).send({
     status: "success",
     statusCode: httpStatus.CREATED,

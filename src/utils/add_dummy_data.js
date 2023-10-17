@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Leaderboard = require('../models/leaderBoard'); // Replace with the actual path to your model file
+const leaderBoard  = require('../models/leaderBoard'); // Replace with the actual path to your model file
 
 mongoose.connect('mongodb+srv://audumber:Ramdas3000@cluster0.bj3vd.mongodb.net/LaundryApplication?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -13,66 +13,108 @@ db.on('error', (error) => {
 });
 
 db.once('open', async () => {
-  // Create dummy leaderboard entries
+  // Create more dummy data
   const dummyData = [
     {
-      userId: mongoose.Types.ObjectId(), // Replace with a valid user ID
-      name: 'John Doe',
+      name: 'Alice',
       score: 100,
+      history: [
+        { score: 100 },
+        { score: 110 },
+        { score: 105 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(), // Replace with another valid user ID
-      name: 'Jane Smith',
-      score: 95,
-    },
-    {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Alice Johnson',
+      name: 'Bob',
       score: 90,
+      history: [
+        { score: 90 },
+        { score: 95 },
+        { score: 92 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Bob Anderson',
-      score: 85,
-    },
-    {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Ella Davis',
+      name: 'Charlie',
       score: 80,
+      history: [
+        { score: 80 },
+        { score: 85 },
+        { score: 78 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Michael Brown',
-      score: 75,
-    },
-    {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Olivia Wilson',
+      name: 'David',
       score: 70,
+      history: [
+        { score: 70 },
+        { score: 72 },
+        { score: 68 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(),
-      name: 'David Lee',
-      score: 65,
+      name: 'Eve',
+      score: 110,
+      history: [
+        { score: 110 },
+        { score: 112 },
+        { score: 108 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(),
-      name: 'Sophia Evans',
+      name: 'Frank',
+      score: 95,
+      history: [
+        { score: 95 },
+        { score: 97 },
+        { score: 92 },
+      ],
+    },
+    {
+      name: 'Grace',
+      score: 120,
+      history: [
+        { score: 120 },
+        { score: 125 },
+        { score: 118 },
+      ],
+    },
+    {
+      name: 'Hank',
       score: 60,
+      history: [
+        { score: 60 },
+        { score: 62 },
+        { score: 58 },
+      ],
     },
     {
-      userId: mongoose.Types.ObjectId(),
-      name: 'William Clark',
-      score: 55,
+      name: 'Ivy',
+      score: 85,
+      history: [
+        { score: 85 },
+        { score: 90 },
+        { score: 83 },
+      ],
     },
-    // Add more entries here if needed
+    {
+      name: 'Jack',
+      score: 105,
+      history: [
+        { score: 105 },
+        { score: 110 },
+        { score: 103 },
+      ],
+    },
   ];
+  
+  module.exports = dummyData;
+  
 
   try {
     // Insert the dummy data into the database
-    await Leaderboard.insertMany(dummyData);
+    await leaderBoard.insertMany(dummyData);
 
-    console.log('Dummy data has been inserted into the leaderboard.');
+    console.log('Dummy data has been inserted into the database.');
   } catch (error) {
     console.error('Error inserting dummy data:', error);
   } finally {

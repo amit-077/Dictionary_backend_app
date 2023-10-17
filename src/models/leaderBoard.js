@@ -1,21 +1,38 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const leaderboardSchema = mongoose.Schema({
+const leaderboardSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference to the User model
-    required: true,
+    type:String,
+    required: true
   },
+
   name: {
     type: String,
     required: true,
   },
   score: {
     type: Number,
-    required: true,
+    default: 0
   },
+  history: [
+    {
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
+      score: {
+        type: Number,
+        default:0
+      },
+    },
+  ],
 });
 
-const Leaderboard = mongoose.model("Leaderboard", leaderboardSchema);
+//Below code is used to delete the model if its present already. As sometimes it was throwing error.
+if (mongoose.models.Leaderboard) {
+  delete mongoose.models.Leaderboard;
+}
+
+const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema);
 
 module.exports = Leaderboard;
