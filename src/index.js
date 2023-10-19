@@ -17,25 +17,37 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   });
 });
 
+// const { createClient } = require('redis');
 
-//connecting to redis as well for CASHING
-// const redis = require('redis');
-
-// const client = redis.createClient({
-//   socket: {
-//       host: config.redis_host,
-//       port: config.redis_port,
-//       connect_timeout: 10000, 
-//   },
-//   password: config.redis_pass,
+// const client = createClient({
+//     password: 'i2hiEnTqzYpMAvjjNGoS0t0WbDlnqUg5',
+//     socket: {
+//         host: 'redis-12879.c277.us-east-1-3.ec2.cloud.redislabs.com',
+//         port: 12879
+//     }
 // });
 
 // client.connect();
 
-// client.on("Audumber", (err) => {logger.info("Audumber")});
-// client.on('connect', () => {logger.info('Redis connecting...')});
-// client.on('ready'       , () => { logger.info('Redis ready')});
-// client.on('reconnecting', () => { logger.info('reconnecting') });
+
+//connecting to redis as well for CASHING
+const redis = require('redis');
+
+const client = redis.createClient({
+  socket: {
+      host: config.redis_host,
+      port: config.redis_port,
+      connect_timeout: 10000, 
+  },
+  password: config.redis_pass,
+});
+
+client.connect();
+
+client.on("Audumber", (err) => {logger.info("Audumber")});
+client.on('connect', () => {logger.info('Redis connecting...')});
+client.on('ready'       , () => { logger.info('Redis ready')});
+client.on('reconnecting', () => { logger.info('reconnecting') });
 
 
 

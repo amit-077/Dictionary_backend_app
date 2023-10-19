@@ -7,26 +7,26 @@ const axios = require('axios').default;
 //redis
 const redis = require('redis');
 //const client = redis.createClient({'redis://default:v98C8n6lzX7Tml21ngUv@containers-us-west-114.railway.app:7473',config.password});
-// const client = redis.createClient({
-//   socket: {
-//       host: config.redis_host,
-//       port: config.redis_port
-//   },
-//   password: config.redis_pass
-// });
+const client = redis.createClient({
+  socket: {
+      host: config.redis_host,
+      port: config.redis_port
+  },
+  password: config.redis_pass
+});
 
-// client.on("error", (err) => {
-//   console.log("Redis Error facing")
-//   console.log(err);
-// });
-// client.connect();
+client.on("error", (err) => {
+  console.log("Redis Error facing")
+  console.log(err);
+});
+client.connect();
 
 //store the OTP in the redis cache 
 const setotp = async (contact_number, otp) => {
   console.log("I am in redis")
-  // client.set(contact_number, otp, (err, reply) => {
-  //   console.log(reply);
-  // });
+  client.set(contact_number, otp, (err, reply) => {
+    console.log(reply);
+  });
 
   return true;
 }
@@ -34,8 +34,8 @@ const setotp = async (contact_number, otp) => {
 //get the OTP form the redis cache
 const getotp = async (contact_number, otp) => {
   //  console.log(await client.connect());
-  // const fetched_otp = await client.get(contact_number);
-  const fetched_otp = 1234
+  const fetched_otp = await client.get(contact_number);
+  //const fetched_otp = 1234
   if (fetched_otp != otp) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "Incorrect OTP");
   }
