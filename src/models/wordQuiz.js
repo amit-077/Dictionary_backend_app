@@ -34,4 +34,10 @@ if (mongoose.models.WordQuiz) {
 
 const WordQuiz = mongoose.model('WordQuiz', wordQuizSchema);
 
-module.exports = WordQuiz;
+/**
+ * @typedef WordQuiz
+ */
+module.exports.WordQuiz = WordQuiz;
+module.exports = {
+    WordQuiz,
+  };

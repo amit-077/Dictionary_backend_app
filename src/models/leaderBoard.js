@@ -35,4 +35,11 @@ if (mongoose.models.Leaderboard) {
 
 const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema);
 
-module.exports = Leaderboard;
+/**
+ * @typedef Leaderboard
+ */
+
+module.exports.Leaderboard = Leaderboard;
+module.exports = {
+  Leaderboard,
+};

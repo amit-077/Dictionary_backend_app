@@ -67,8 +67,8 @@ if (mongoose.models.WordCategory) {
 }
 
 const WordCategory = mongoose.model("WordCategory", wordCategorySchema);
-module.exports = WordCategory;
+module.exports.WordCategory = WordCategory;
 
-// module.exports = {
-//   WordCategory,
-// };
+module.exports = {
+  WordCategory,
+};
