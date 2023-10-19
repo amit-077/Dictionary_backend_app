@@ -47,7 +47,6 @@
     "faker": "^5.1.0",
     "mockingoose": "~2.13.2",
     "node-mocks-http": "^1.8.0",
-    "nodemon": "^2.0.7",
     "prettier": "^2.0.5",
     "supertest": "^4.0.2"
   }
