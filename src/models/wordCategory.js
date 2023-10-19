@@ -62,6 +62,10 @@ const wordCategorySchema = mongoose.Schema({
   ],
 });
 
+if (mongoose.models.WordCategory) {
+  delete mongoose.models.WordCategory;
+}
+
 const WordCategory = mongoose.model("WordCategory", wordCategorySchema);
 module.exports = WordCategory;
 

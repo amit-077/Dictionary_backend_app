@@ -28,6 +28,10 @@ const wordQuizSchema = new mongoose.Schema({
 
 });
 
+if (mongoose.models.WordQuiz) {
+    delete mongoose.models.WordQuiz;
+  }
+
 const WordQuiz = mongoose.model('WordQuiz', wordQuizSchema);
 
 module.exports = WordQuiz;
