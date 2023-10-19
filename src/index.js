@@ -19,23 +19,23 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
 
 
 //connecting to redis as well for CASHING
-const redis = require('redis');
+// const redis = require('redis');
 
-const client = redis.createClient({
-  socket: {
-      host: config.redis_host,
-      port: config.redis_port,
-      connect_timeout: 10000, // Set the connection timeout to 10 seconds (adjust as needed)
-  },
-  password: config.redis_pass,
-});
+// const client = redis.createClient({
+//   socket: {
+//       host: config.redis_host,
+//       port: config.redis_port,
+//       connect_timeout: 10000, 
+//   },
+//   password: config.redis_pass,
+// });
 
-client.connect();
+// client.connect();
 
-client.on("Audumber", (err) => {logger.info("Audumber")});
-client.on('connect', () => {logger.info('Redis connecting...')});
-client.on('ready'       , () => { logger.info('Redis ready')});
-client.on('reconnecting', () => { logger.info('reconnecting') });
+// client.on("Audumber", (err) => {logger.info("Audumber")});
+// client.on('connect', () => {logger.info('Redis connecting...')});
+// client.on('ready'       , () => { logger.info('Redis ready')});
+// client.on('reconnecting', () => { logger.info('reconnecting') });
 
 
 
