@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const leaderBoard  = require('../models/leaderBoard'); // Replace with the actual path to your model file
+const leaderBoard  = require('../models/Leaderboard'); // Replace with the actual path to your model file
 
 mongoose.connect('mongodb+srv://audumber:Ramdas3000@cluster0.bj3vd.mongodb.net/LaundryApplication?retryWrites=true&w=majority', {
   useNewUrlParser: true,

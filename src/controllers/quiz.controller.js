@@ -1,8 +1,8 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
-const Leaderboard = require("../models/LeaderBoard");
-const WordQuiz = require("../models/WordQuiz");
+const Leaderboard = require("../models/Leaderboard");
+const WordQuiz = require("../models/wordQuiz");
 const { setUserWordCategory, userService } = require("../services");
 
 const getQuestions = catchAsync(async (req, res) => {

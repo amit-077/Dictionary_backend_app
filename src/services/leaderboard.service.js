@@ -1,8 +1,9 @@
+const Leaderboard = require("../models/Leaderboard");
 
 const { User } = require("../models");
-const Leaderboard = require("../models/leaderBoard"); // Replace with the correct path to your WordCategory model
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
+
 
 //Below function helps to create a entry into leaderboard when user is registering. 
 const setLeaderBoard = async (user) => {
