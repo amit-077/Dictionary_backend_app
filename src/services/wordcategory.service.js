@@ -1,5 +1,5 @@
 const { User } = require("../models");
-const WordCategory= require("../models/wordCategory"); // Replace with the correct path to your WordCategory model
+const WordCategory= require("../models/wordCategory.js"); // Replace with the correct path to your WordCategory model
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 

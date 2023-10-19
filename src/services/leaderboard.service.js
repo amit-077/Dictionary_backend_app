@@ -1,6 +1,6 @@
 
 const { User } = require("../models");
-const Leaderboard = require("../models/leaderBoard"); // Replace with the correct path to your WordCategory model
+const Leaderboard = require("../models/leaderBoard.js"); // Replace with the correct path to your WordCategory model
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 
