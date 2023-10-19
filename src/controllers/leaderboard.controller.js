@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
-const Leaderboard = require("../models/LeaderBoard");
+const Leaderboard = require("../models/leaderBoard");
 const { setUserWordCategory, userService } = require("../services");
 
 const getLeaders = catchAsync(async (req, res) => {

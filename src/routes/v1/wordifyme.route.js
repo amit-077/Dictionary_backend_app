@@ -18,7 +18,7 @@ const express = require("express");
 const validate = require("../../middlewares/validate");
 const userValidation = require("../../validations/user.validation");
 const categoryController = require("../../controllers/category.controller");
-const LeaderBoardController = require("../../controllers/LeaderBoard.controller");
+const LeaderBoardController = require("../../controllers/leaderboard.controller");
 const quizController = require("../../controllers/quiz.controller")
 const auth = require("../../middlewares/auth");
 

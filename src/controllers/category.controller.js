@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
-const WordCategory = require("../models/WordCategory");
+const WordCategory = require("../models/wordCategory");
 const { setUserWordCategory, userService } = require("../services");
 
 
