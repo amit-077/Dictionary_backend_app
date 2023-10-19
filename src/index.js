@@ -22,11 +22,12 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
 const redis = require('redis');
 
 const client = redis.createClient({
-    socket: {
-        host: config.redis_host,
-        port: config.redis_port
-    },
-    password: config.redis_pass
+  socket: {
+      host: config.redis_host,
+      port: config.redis_port,
+      connect_timeout: 10000, // Set the connection timeout to 10 seconds (adjust as needed)
+  },
+  password: config.redis_pass,
 });
 
 client.connect();

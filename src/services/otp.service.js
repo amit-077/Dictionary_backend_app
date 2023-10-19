@@ -16,7 +16,7 @@ const client = redis.createClient({
 });
 
 client.on("error", (err) => {
-  console.log("Redis Error")
+  console.log("Redis Error facing")
   console.log(err);
 });
 client.connect();
