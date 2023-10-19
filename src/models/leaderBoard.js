@@ -27,7 +27,6 @@ const leaderboardSchema = new mongoose.Schema({
     },
   ],
 });
-
 //Below code is used to delete the model if its present already. As sometimes it was throwing error.
 if (mongoose.models.leaderboard) {
   delete mongoose.models.leaderboard;
