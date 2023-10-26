@@ -17,6 +17,8 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   });
 });
 
+//below code from actula redis.com database. Its free. will be shifting to it soon.
+
 // const { createClient } = require('redis');
 
 // const client = createClient({
