@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const leaderBoard  = require('../models/Leaderboard'); // Replace with the actual path to your model file
+const LeaderBoard  = require('../models/Leaderboard'); // Replace with the actual path to your model file
 
 mongoose.connect('mongodb+srv://audumber:Ramdas3000@cluster0.bj3vd.mongodb.net/LaundryApplication?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -16,95 +16,131 @@ db.once('open', async () => {
   // Create more dummy data
   const dummyData = [
     {
-      name: 'Alice',
-      score: 100,
-      history: [
-        { score: 100 },
-        { score: 110 },
-        { score: 105 },
-      ],
+      "userId": "user1",
+      "name": "John Doe",
+      "score": 150,
+      "history": [
+        {
+          "timestamp": "2023-01-01T12:00:00Z",
+          "score": 100
+        },
+        {
+          "timestamp": "2023-01-02T14:30:00Z",
+          "score": 50
+        }
+      ]
     },
     {
-      name: 'Bob',
-      score: 90,
-      history: [
-        { score: 90 },
-        { score: 95 },
-        { score: 92 },
-      ],
+      "userId": "user2",
+      "name": "Jane Smith",
+      "score": 200,
+      "history": [
+        {
+          "timestamp": "2023-01-03T10:45:00Z",
+          "score": 150
+        },
+        {
+          "timestamp": "2023-01-04T16:20:00Z",
+          "score": 50
+        }
+      ]
     },
     {
-      name: 'Charlie',
-      score: 80,
-      history: [
-        { score: 80 },
-        { score: 85 },
-        { score: 78 },
-      ],
+      "userId": "user3",
+      "name": "Alice Johnson",
+      "score": 75,
+      "history": [
+        {
+          "timestamp": "2023-01-05T08:15:00Z",
+          "score": 75
+        }
+      ]
     },
     {
-      name: 'David',
-      score: 70,
-      history: [
-        { score: 70 },
-        { score: 72 },
-        { score: 68 },
-      ],
+      "userId": "user4",
+      "name": "Bob Williams",
+      "score": 120,
+      "history": [
+        {
+          "timestamp": "2023-01-06T11:30:00Z",
+          "score": 120
+        }
+      ]
     },
     {
-      name: 'Eve',
-      score: 110,
-      history: [
-        { score: 110 },
-        { score: 112 },
-        { score: 108 },
-      ],
+      "userId": "user5",
+      "name": "Eva Davis",
+      "score": 90,
+      "history": [
+        {
+          "timestamp": "2023-01-07T09:20:00Z",
+          "score": 90
+        }
+      ]
     },
     {
-      name: 'Frank',
-      score: 95,
-      history: [
-        { score: 95 },
-        { score: 97 },
-        { score: 92 },
-      ],
+      "userId": "user6",
+      "name": "Chris Brown",
+      "score": 180,
+      "history": [
+        {
+          "timestamp": "2023-01-08T13:45:00Z",
+          "score": 150
+        },
+        {
+          "timestamp": "2023-01-09T15:10:00Z",
+          "score": 30
+        }
+      ]
     },
     {
-      name: 'Grace',
-      score: 120,
-      history: [
-        { score: 120 },
-        { score: 125 },
-        { score: 118 },
-      ],
+      "userId": "user7",
+      "name": "Olivia Taylor",
+      "score": 100,
+      "history": [
+        {
+          "timestamp": "2023-01-10T07:55:00Z",
+          "score": 100
+        }
+      ]
     },
     {
-      name: 'Hank',
-      score: 60,
-      history: [
-        { score: 60 },
-        { score: 62 },
-        { score: 58 },
-      ],
+      "userId": "user8",
+      "name": "Daniel Clark",
+      "score": 160,
+      "history": [
+        {
+          "timestamp": "2023-01-11T12:30:00Z",
+          "score": 120
+        },
+        {
+          "timestamp": "2023-01-12T14:15:00Z",
+          "score": 40
+        }
+      ]
     },
     {
-      name: 'Ivy',
-      score: 85,
-      history: [
-        { score: 85 },
-        { score: 90 },
-        { score: 83 },
-      ],
+      "userId": "user9",
+      "name": "Sophia Anderson",
+      "score": 80,
+      "history": [
+        {
+          "timestamp": "2023-01-13T09:40:00Z",
+          "score": 80
+        }
+      ]
     },
     {
-      name: 'Jack',
-      score: 105,
-      history: [
-        { score: 105 },
-        { score: 110 },
-        { score: 103 },
-      ],
-    },
+      "userId": "user10",
+      "name": "Liam Baker",
+      "score": 130,
+      "history": [
+        {
+          "timestamp": "2023-01-14T11:20:00Z",
+          "score": 130
+        }
+      ]
+    }
   ];
   
   module.exports = dummyData;
@@ -112,12 +148,12 @@ db.once('open', async () => {
 
   try {
     // Insert the dummy data into the database
-    await leaderBoard.insertMany(dummyData);
+    await LeaderBoard.create(dummyData);
 
     console.log('Dummy data has been inserted into the database.');
   } catch (error) {
     console.error('Error inserting dummy data:', error);
-  } finally {
+  } finally { 
     // Close the database connection
     db.close();
   }
