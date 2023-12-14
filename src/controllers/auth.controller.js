@@ -99,17 +99,19 @@ const login_with_email = catchAsync(async (req, res) => {
       message: "User not found , Redirect to signup page"
 
     })
+  }else{
+    const tokens = await tokenService.generateAuthTokens(user);
+    res.send(httpStatus.CREATED, {
+      code: httpStatus.CREATED,
+      status: "success",
+      redirect: false,
+      data: user,
+      token: tokens,
+      message: "Login Successfully , Redirect to home page"
+  
+    })
   }
-  const tokens = await tokenService.generateAuthTokens(user);
-  res.send(httpStatus.CREATED, {
-    code: httpStatus.CREATED,
-    status: "success",
-    redirect: false,
-    data: user,
-    token: tokens,
-    message: "Login Successfully , Redirect to home page"
-
-  })
+ 
 
 });
 
@@ -140,17 +142,19 @@ const verify_otp = catchAsync(async (req, res) => {
       message: "User not found , Redirect to signup page"
 
     })
+  }else{
+    const tokens = await tokenService.generateAuthTokens(user);
+    res.send(httpStatus.CREATED, {
+      code: httpStatus.CREATED,
+      status: "success",
+      redirect: false,
+      data: user,
+      token: tokens,
+      message: "Login Successfully , Redirect to home page"
+  
+    })
   }
-  const tokens = await tokenService.generateAuthTokens(user);
-  res.send(httpStatus.CREATED, {
-    code: httpStatus.CREATED,
-    status: "success",
-    redirect: false,
-    data: user,
-    token: tokens,
-    message: "Login Successfully , Redirect to home page"
-
-  })
+ 
 
 })
 
