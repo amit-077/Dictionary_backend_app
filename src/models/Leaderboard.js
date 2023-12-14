@@ -32,13 +32,13 @@ if (mongoose.models.leaderboard) {
   delete mongoose.models.leaderboard;
 }
 
-const Leaderboard = mongoose.model('leaderboard', leaderboardSchema);
+const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema);
 
-/**
- * @typedef Leaderboard
- */
+// /**
+//  * @typedef Leaderboard
+//  */
 
-module.exports.Leaderboard = Leaderboard;
-module.exports = {
-  Leaderboard,
-};
+module.exports = Leaderboard;
+// module.exports = {
+//   Leaderboard,
+// };

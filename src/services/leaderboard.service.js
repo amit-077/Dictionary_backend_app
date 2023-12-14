@@ -1,4 +1,4 @@
-const Leaderboard = require("../models/Leaderboard");
+const {Leaderboard} = require("../models/Leaderboard");
 
 const { User } = require("../models");
 const httpStatus = require("http-status");

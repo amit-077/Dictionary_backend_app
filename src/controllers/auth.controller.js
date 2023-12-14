@@ -80,14 +80,38 @@ const register = catchAsync(async (req, res) => {
  *
  */
 const login = catchAsync(async (req, res) => {
-  // CRIO_SOLUTION_START_MODULE_AUTH
   const { contact, password } = req.body;
   const user = await authService.loginUserWithContactAndPassword(contact, password);
   const tokens = await tokenService.generateAuthTokens(user);
   res.send({ user, tokens });
-  // CRIO_SOLUTION_END_MODULE_AUTH
 });
 
+//we use this for the wordify , Signin with google.
+const login_with_email = catchAsync(async (req, res) => {
+  const { email} = req.body;
+  const user = await authService.loginUserWithEmailAndPasswordNew(email);
+  if (!user) {
+    res.send(httpStatus.OK, {
+      code:httpStatus.OK,
+      status: "fail",
+      redirect: true,
+      data: "",
+      message: "User not found , Redirect to signup page"
+
+    })
+  }
+  const tokens = await tokenService.generateAuthTokens(user);
+  res.send(httpStatus.CREATED, {
+    code: httpStatus.CREATED,
+    status: "success",
+    redirect: false,
+    data: user,
+    token: tokens,
+    message: "Login Successfully , Redirect to home page"
+
+  })
+
+});
 
 const send_otp = catchAsync(async (req, res) => {
   const { contact } = req.body;
@@ -135,4 +159,5 @@ module.exports = {
   login,
   send_otp,
   verify_otp,
+  login_with_email
 };

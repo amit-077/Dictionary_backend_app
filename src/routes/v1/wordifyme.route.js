@@ -19,10 +19,19 @@ const validate = require("../../middlewares/validate");
 const userValidation = require("../../validations/user.validation");
 const categoryController = require("../../controllers/category.controller");
 const LeaderBoardController = require("../../controllers/leaderboard.controller");
-const quizController = require("../../controllers/quiz.controller")
+const quizController = require("../../controllers/quiz.controller");
+const homeController = require("../../controllers/home.controller");
 const auth = require("../../middlewares/auth");
 
 const router = express.Router();
+
+
+//Home - working -------------------------------------------------------------
+router.get(
+  "/home/:userId",
+  auth(),
+  homeController.getHome
+)
 
 
 //Categories - working --------------------------------------------------------

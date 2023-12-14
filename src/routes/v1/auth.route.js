@@ -15,8 +15,10 @@ router.post(
   authController.register
 );
 router.post("/login", validate(authValidation.login), authController.login);
-// CRIO_SOLUTION_END_MODULE_AUTH
 
+
+//this we use for wordify Signin with google
+router.post("/login/email" , authController.login_with_email)
 
 //verify
 router.post("/otp/send" ,  validate(authValidation.send_otp) , authController.send_otp)

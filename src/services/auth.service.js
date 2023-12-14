@@ -34,16 +34,23 @@ const loginUserWithContactAndPassword = async (contact , password) => {
   return user;
 }
 
+
+
 //Its used for login-with-otp
 const loginUserWithContactAndPasswordNew = async (contact) => {
   const user = await userService.getUserByContact(contact);
-  
-  
   return user;
 }
+
+
+const loginUserWithEmailAndPasswordNew = async (email) => {
+  const user = await userService.getUserByEmail(email);
+  return user;
+};
 
 module.exports = {
   loginUserWithEmailAndPassword,
   loginUserWithContactAndPassword,
   loginUserWithContactAndPasswordNew,
+  loginUserWithEmailAndPasswordNew
 };
